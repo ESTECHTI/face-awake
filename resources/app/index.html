@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Rosto com Olhos Piscando em CSS</title>
+  <style>
+    body {
+      background: #e0f7fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .face {
+      background: #ffe0b2;
+      width: 220px;
+      height: 250px;
+      border-radius: 50% 50% 48% 52% / 55% 55% 50% 50%;
+      position: relative;
+      box-shadow: 0 0 40px #bdbdbd77;
+      border: 2px solid #e3b07f;
+    }
+    /* Olhos */
+    .eye {
+      position: absolute;
+      top: 85px;
+      width: 43px;
+      height: 27px;
+      background: #fff;
+      border-radius: 50%;
+      border: 2px solid #bdbdbd;
+      overflow: hidden;
+    }
+    .eye.left {
+      left: 40px;
+    }
+    .eye.right {
+      right: 40px;
+    }
+    .pupil {
+      width: 16px;
+      height: 16px;
+      background: #333;
+      border-radius: 50%;
+      position: absolute;
+      top: 6px;
+      left: 13px;
+      z-index: 1;
+      box-shadow: 0 0 2px #111;
+    }
+    /* Pálpebra para piscar */
+    .eyelid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 43px;
+      height: 27px;
+      background: #ffe0b2;
+      border-radius: 50%;
+      z-index: 2;
+      animation: blink 4s infinite;
+      transform-origin: top center;
+    }
+    .eye.right .eyelid {
+      animation-delay: 0.3s; /* Olhos piscam em momentos diferentes */
+    }
+    @keyframes blink {
+      0%, 94% { height: 0; }
+      95%, 97% { height: 27px; }
+      100% { height: 0; }
+    }
+    /* Sobrancelhas */
+    .brow {
+      position: absolute;
+      width: 50px;
+      height: 14px;
+      border-top: 5px solid #a67c52;
+      border-radius: 50%;
+      top: 67px;
+      z-index: 3;
+    }
+    .brow.left {
+      left: 28px;
+      transform: rotate(-12deg);
+    }
+    .brow.right {
+      right: 28px;
+      transform: rotate(12deg);
+    }
+    /* Boca */
+    .mouth {
+      position: absolute;
+      bottom: 45px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 40px;
+      border-bottom: 5px solid #a67c52;
+      border-radius: 0 0 70px 70px / 0 0 50px 50px;
+    }
+    /* Nariz */
+    .nose {
+      position: absolute;
+      top: 125px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 26px;
+      height: 18px;
+      border-radius: 50%;
+      border-bottom: 3px solid #cc9966;
+    }
+  </style>
+</head>
+<body>
+  <div class="face">
+    <div class="brow left"></div>
+    <div class="brow right"></div>
+    <div class="eye left">
+      <div class="pupil"></div>
+      <div class="eyelid"></div>
+    </div>
+    <div class="eye right">
+      <div class="pupil"></div>
+      <div class="eyelid"></div>
+    </div>
+    <div class="nose"></div>
+    <div class="mouth"></div>
+  </div>
+</body>
+</html>
